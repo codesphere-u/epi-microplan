@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling>=1.24.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "epi-microplan"
+version = "0.1.0"
+description = "Zero-dependency WHO EPI immunization microplanner: session-driven open-vial wastage (MDVP 28d vs 6h lyophilized), packed cold-chain volume, SDD/ILR fridge sizing, and AD syringe safety-box planner."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Akandwanaho Ivan Alvin" }]
+keywords = [
+    "immunization",
+    "who-epi",
+    "vaccine-cold-chain",
+    "microplanning",
+    "public-health",
+    "gavi",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+[project.scripts]
+epi-microplan = "epi_microplan.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/epi_microplan"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
